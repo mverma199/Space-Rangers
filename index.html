@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    html, body { margin: 0; padding: 0; }
+    body { 
+        
+        background: black;
+        overflow: hidden;
+        cursor: none;
+    }
+    #mainDiv
+    {
+        width: 500px;
+        height: 500px;
+        margin: 200px auto;
+        perspective: 800px;
+    }
+
+    #boxDiv
+    {
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            transform: translateZ(600px);
+    }
+
+    #boxDiv div
+    {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+    }
+
+    #front{
+        transform: translateZ(250px) rotateY(180deg);
+    }
+    #back{
+        transform: translateZ(-250px);
+    }
+
+    
+    #left
+    {
+        transform: rotateY(90deg) translateX(-250px);
+        transform-origin: left;
+    }
+    
+    #right
+    {
+        transform: rotateY(-90deg) translateX(250px);
+        transform-origin: right;
+    }
+        #top
+        {
+            transform: rotateX(-90deg) translateY(-250px);
+            transform-origin: top;
+        }
+        #bottom
+        {
+            transform: rotateX(90deg) translateY(250px);
+            transform-origin: bottom;
+        }
+        img {
+            width: 500px;
+            height: 500px;
+        }
+
+
+
+</style>
+
+</head>
+<body>
+        <div id="mainDiv">
+            <div id="boxDiv">
+                <div id="front"><img src="divine_ft.jpg" /></div>
+                <div id="back"><img src="divine_bk.jpg" /></div>
+                <div id="left"><img src="divine_lf.jpg" /></div>
+                <div id="right"><img src="divine_rt.jpg" /></div>
+                <div id="top"><img src="divine_up.jpg" /></div>
+                <div id="bottom"><img src="divine_dn.jpg" /></div>
+
+            </div>
+
+
+        </div>
+<script>
+    var world = document.getElementById("boxDiv");
+    var x;
+    var y;
+    var speed;
+    document.addEventListener('mousemove',function(e)
+
+    {
+        x=e.clientX;
+        y=e.clientY;
+      //  y=-y;
+        /*
+      if Input.is_key_pressed(KEY_W)
+      speed = 4
+     else:
+      speed = 0
+     translate(Vector3(0,0,delta * speed))*/
+
+        world.style.transform = "translateZ(600px) rotateX("+y+"deg) rotateY("+x+"deg)";
+//        world.style.transform = "translateX(600px) rotateZ("+y+"deg) rotateY("+x+"deg)";
+        
+    })
+
+
+</script>
+
+</body>
+</html>
